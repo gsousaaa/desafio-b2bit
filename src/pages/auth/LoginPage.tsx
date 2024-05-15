@@ -3,7 +3,6 @@ import { FormLogin } from "../../components/layout/FormLogin"
 import { useNavigate } from 'react-router-dom';
 import { Credentials, loginUser } from "../../services/api"
 
-
 const Login = () => {
     const navigate = useNavigate()
 
@@ -12,10 +11,13 @@ const Login = () => {
             let loginData = await loginUser({email, password})
             if(loginData && loginData.tokens.access) {
                 navigate('/dashboard')
+                
+                setTimeout(() => {
+                  localStorage.removeItem('accessToken')
+                }, 3600000)
             }
         } catch(e) {
           console.log('Erro ao fazer login')
-          return
         }
     }
  
