@@ -1,16 +1,22 @@
 import { Input } from "../common/Input";
 import { Button } from "../common/Button";
 import { Credentials} from "../../services/api";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 
  
 interface LoginFormProps {
-    onLogin: ( (credential: Credentials) => void)
+    onLogin: ( credential: Credentials) => void
 }
 
 export const FormLogin: React.FC<LoginFormProps> = ({ onLogin } ) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const isRunningOnBrowser = useSyncExternalStore(
+        () => () => {},
+        () => true,
+        () => false
+    )
 
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -27,16 +33,16 @@ export const FormLogin: React.FC<LoginFormProps> = ({ onLogin } ) => {
 
                     <div>
                         <label className="text-black font-semibold">E-mail</label>
-                        <Input name="email" type="email" placeholder="@gmail.com" onChange={(e) => setEmail(e.target.value)} value={email}/>
+                        <Input disabled={!isRunningOnBrowser} name="email" type="email" placeholder="@gmail.com" onChange={(e) => setEmail(e.target.value)} value={email}/>
                     </div>
 
                     <div className="pt-5 pb-3">
                         <label className="text-black font-semibold">Password</label>
-                        <Input name="password" type="password" placeholder="****" onChange={(e)=> setPassword(e.target.value)} value={password}/>
+                        <Input disabled={!isRunningOnBrowser} name="password" type="password" placeholder={"*".repeat(16)} onChange={(e)=> setPassword(e.target.value)} value={password}/>
                     </div>
 
                     <div className="pt-5 flex justify-center">
-                        <Button type="submit">Sign In</Button>
+                        <Button disabled={!isRunningOnBrowser} type="submit">Sign In</Button>
                     </div>
                 </div>
             </form>
