@@ -7,59 +7,76 @@ export interface Credentials {
     password: string;
 }
 
-const setupAxiosInterceptors = (instance: AxiosInstance) => {
-    instance.interceptors.request.use(
-        (config) => {
-            const accessToken = localStorage.getItem('accessToken');
+export interface ProfileData {
+    id: number,
+    name: string,
+    email: string,
+    is_active: boolean,
+    avatar?: string | null,
+    type: string,
+    created: string,
+    modified: string,
+    role: string
 
-            if (accessToken) {
-                config.headers.Authorization = `Bearer ${accessToken}`;
-            }
-            return config;
-        },
-        (error) => {
-            return Promise.reject(error);
+}
+
+
+axios.interceptors.request.use(
+    (config) => {
+       
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
+axios.interceptors.response.use(
+    (response) => {
+        if (response.config.url && response.config.url.includes(`${baseURL}/login/`)) {
+            const access = response.data.tokens.access;
+            localStorage.setItem('accessToken', access);
         }
-    );
 
-    instance.interceptors.response.use(
-        (response) => {
-            if (response.config.url === `${baseURL}/login/`) {
-                
-                const access = response.data.tokens.access;
-                localStorage.setItem('accessToken', access);
+        return response;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
 
-            }
 
-            return response;
-        },
-        (error) => {
-            return Promise.reject(error);
-        }
-    );
-};
-
-const axiosInstance = axios.create({
-    baseURL: baseURL
-});
-
-setupAxiosInterceptors(axiosInstance)
-
-export const loginUser =  async(userData: Credentials) => {
+export const loginUser = async (userData: Credentials) => {
     try {
         let response = await axios.post(`${baseURL}/login/`, userData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json;version=v1_web'
-                }
-            
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json;version=v1_web'
+            }
         })
+
         console.log(response.data)
         return response.data
-    } catch(e) {
+    } catch (e) {
         console.log(e)
     }
 }
 
+export const getProfile = async (): Promise<ProfileData> => {
+    try {
+        let accessToken = localStorage.getItem('accessToken')
+        let response = await axios.get(`${baseURL}/profile`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json;version=v1_web',
+                'Authorization': `Bearer ${accessToken}`
+            }
+        })
 
+        return response.data
+    } catch (e) {
+        console.log(e)
+        throw e;
+    }
+}
 
