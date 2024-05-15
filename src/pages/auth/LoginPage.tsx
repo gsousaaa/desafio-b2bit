@@ -9,11 +9,13 @@ const Login = () => {
 
     const handleLogin = async ({ email, password }: Credentials) => {
         try {
-            await loginUser({email, password})
-            navigate('/dashboard')
-
+            let loginData = await loginUser({email, password})
+            if(loginData && loginData.tokens.access) {
+                navigate('/dashboard')
+            }
         } catch(e) {
           console.log('Erro ao fazer login')
+          return
         }
     }
  
