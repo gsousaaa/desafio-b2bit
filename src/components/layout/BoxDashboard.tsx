@@ -2,17 +2,20 @@
 import { useEffect, useState } from "react"
 import { getProfile, ProfileData } from "../../services/api"
 import { Field } from "../common/Field"
+import { Loading } from "../common/Loading";
 
 
 
 export const BoxDashboard = () => {
     const [profileData, setProfileData] = useState<ProfileData | null>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 let data = await getProfile()
                 setProfileData(data)
+                setLoading(false)
             } catch (err) {
                 console.log(err)
             }
@@ -20,6 +23,10 @@ export const BoxDashboard = () => {
 
         fetchData()
     }, []) 
+
+    if(loading) {
+        return <Loading/>
+    }
 
 
     return (
