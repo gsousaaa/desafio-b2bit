@@ -45,5 +45,21 @@ const axiosInstance = axios.create({
 
 setupAxiosInterceptors(axiosInstance)
 
+export const loginUser =  async(userData: Credentials) => {
+    try {
+        let response = await axios.post(`${baseURL}/login/`, userData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json;version=v1_web'
+                }
+            
+        })
+        console.log(response.data)
+        return response.data
+    } catch(e) {
+        console.log(e)
+    }
+}
+
 
 
