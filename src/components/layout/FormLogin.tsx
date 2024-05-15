@@ -19,7 +19,7 @@ export const FormLogin: React.FC<LoginFormProps> = ({ onLogin } ) => {
     }
 
     return (    
-            <form onSubmit={handleSubmit} className="bg-white px-10 py-20 rounded-3xl ">
+            <form onSubmit={handleSubmit} className="bg-white px-10 py-20 rounded-3xl shadow-2xl">
                 <div>
                     <div className="my-10 flex justify-center">
                         <img src="/images/b2bit.png" alt="b2bit-logo" width={300} />

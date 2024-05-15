@@ -23,7 +23,7 @@ export const BoxDashboard = () => {
 
 
     return (
-        <div className="bg-white px-10 py-10 rounded-3xl">
+        <div className="bg-white px-10 py-10 rounded-3xl shadow-2xl">
             <div className="flex flex-col items-center pb-5">
                 <p>Profile Picture</p>
                 {profileData &&
