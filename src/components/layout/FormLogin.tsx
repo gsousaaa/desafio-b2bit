@@ -19,19 +19,19 @@ export const FormLogin: React.FC<LoginFormProps> = ({ onLogin } ) => {
     }
 
     return (    
-            <form onSubmit={handleSubmit} className="bg-white px-10 py-20 rounded-3xl shadow-2xl">
+            <form onSubmit={handleSubmit} className="bg-white px-8 py-12 rounded-3xl shadow-2xl font-sans">
                 <div>
-                    <div className="my-10 flex justify-center">
-                        <img src="/images/b2bit.png" alt="b2bit-logo" width={300} />
+                    <div className="my-10 flex justify-center pb-3">
+                        <img src="/images/b2bit.png" alt="b2bit-logo" width={330} />
                     </div>
 
                     <div>
-                        <label className="text-black">E-mail</label>
+                        <label className="text-black font-semibold">E-mail</label>
                         <Input name="email" type="email" placeholder="@gmail.com" onChange={(e) => setEmail(e.target.value)} value={email}/>
                     </div>
 
-                    <div className="pt-5">
-                        <label className="text-black">Password</label>
+                    <div className="pt-5 pb-3">
+                        <label className="text-black font-semibold">Password</label>
                         <Input name="password" type="password" placeholder="****" onChange={(e)=> setPassword(e.target.value)} value={password}/>
                     </div>
 

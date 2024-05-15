@@ -4,7 +4,7 @@ import { BoxDashboard } from '../../components/layout/BoxDashboard'
 const Dashboard = () => {
     return(
         <section >
-            <div className='pt-3 flex justify-end pr-10'> 
+            <div className='pt-3 flex justify-end pr-10 pb-3'> 
                 <Button type='button'>Logout</Button>
             </div>
 
