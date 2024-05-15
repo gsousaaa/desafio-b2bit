@@ -5,7 +5,11 @@ import { Credentials, loginUser } from "../../services/api"
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
+interface LoginProps {
+  setIsAuth: (bool: boolean) => any
+}
+
+const Login = (  { setIsAuth }: LoginProps) => {
     const navigate = useNavigate()
 
     const handleLogin = async ( { email, password }: Credentials) => {
@@ -18,8 +22,8 @@ const Login = () => {
         try {
             let loginData = await loginUser({email, password})
             if(loginData && loginData.tokens.access) {
+                setIsAuth(true)
                 navigate('/dashboard')
-
                 setTimeout(() => {
                   localStorage.removeItem('accessToken')
                 }, 3600000)
