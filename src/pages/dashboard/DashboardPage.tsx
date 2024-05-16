@@ -2,7 +2,7 @@ import { Button } from '../../components/common/Button'
 import { BoxDashboard } from '../../components/layout/BoxDashboard'
 import { useNavigate } from 'react-router-dom'
 
-const Dashboard = () => {
+const DashboardPage = () => {
     const navigate = useNavigate()
 
     const handleLogout = () => {
@@ -34,4 +34,4 @@ const Dashboard = () => {
 }
 
 
-export default Dashboard
+export default DashboardPage
