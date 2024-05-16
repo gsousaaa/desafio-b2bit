@@ -38,7 +38,7 @@ Para ter acesso à aplicação funcionando em tempo real, acesse: https://desafi
   - Field.tsx - Componente utilizado para os campos de texto contendo as informações dos usuários: e-mail e nome.
   - Input.tsx - Componente utilizado para os inputs da página de login: e-mail e senha.
   - Loading.tsx - Componente utilizado enquanto as informações buscadas na API ainda não estão prontas.
-- /src/components/layout: Pasta contendo os componentes utilizados nos layouts da página
+- /src/components/layout: Pasta contendo os componentes utilizados no layout das páginas
     - BoxDashboard.tsx - Componente que consiste em um card com os campos de informação dos usuários.
 - /src/components/auth: Pasta contendo os componentes utilizados na autenticação.
     - FormLogin.tsx - Componente que consiste em um box contendo um formulário de login, onde é feito o processo de passagem das informações (e-mail e senha) para a página de Login.
