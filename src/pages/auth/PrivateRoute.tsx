@@ -1,4 +1,5 @@
-import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import {useNavigate } from "react-router-dom";
 
 interface PrivateProps {
     children: JSX.Element,
@@ -7,13 +8,21 @@ interface PrivateProps {
 }
 
 export const PrivateRoute = ({children, isAuth, redirect}: PrivateProps) => {
-    const token = localStorage.getItem('accessToken')
+    const navigator = useNavigate()
+    
+    useEffect(() => {
+        const token = localStorage.getItem('accessToken')
+        if(!token) {
+            navigator(redirect)
+        }
+    }, [isAuth])
 
-    return isAuth && token ? (
+     return isAuth ? (
         <>
         {children}
         </>
-    ) : (
-        <Navigate to={redirect} replace/>
-    )
-}   
+    ) :  null
+
+    
+    
+}
