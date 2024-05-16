@@ -8,28 +8,28 @@ const Dashboard = () => {
     const handleLogout = () => {
         try {
             const token = localStorage.getItem('accessToken')
-            if(token) {
+            if (token) {
                 localStorage.removeItem('accessToken')
                 navigate('/')
             }
-            
-        } catch(e) {
+
+        } catch (e) {
             console.log("Erro ao fazer logout")
         }
     }
 
-    return(
+    return (
         <section>
-            <div className='pt-3 flex justify-end pr-10 pb-3'> 
+            <div className='pt-3 flex justify-end pr-10 pb-3'>
                 <Button onClick={handleLogout} type='button'>Logout</Button>
             </div>
 
-        <div className="flex w-full h-screen" >
-            <div className="bg-gray-100 w-full flex items-center justify-center">
-                    <BoxDashboard/>
+            <div className='h-screen bg-gray-100'>
+                <div className="w-full pt-20 flex items-center justify-center">
+                    <BoxDashboard />
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     )
 }
 
