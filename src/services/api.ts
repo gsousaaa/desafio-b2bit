@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios from "axios";
 
 const baseURL = 'https://api.homologation.cliqdrive.com.br/auth'
 
@@ -17,9 +17,7 @@ export interface ProfileData {
     created: string,
     modified: string,
     role: string
-
 }
-
 
 axios.interceptors.request.use(
     (config) => {
@@ -45,7 +43,6 @@ axios.interceptors.response.use(
     }
 );
 
-
 export const loginUser = async (userData: Credentials) => {
     try {
         let response = await axios.post(`${baseURL}/login/`, userData, {
@@ -55,10 +52,9 @@ export const loginUser = async (userData: Credentials) => {
             }
         })
 
-        console.log(response.data)
         return response.data
     } catch (e) {
-        console.log(e)
+        throw e;
     }
 }
 
@@ -75,7 +71,6 @@ export const getProfile = async (): Promise<ProfileData> => {
 
         return response.data
     } catch (e) {
-        console.log(e)
         throw e;
     }
 }
