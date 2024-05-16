@@ -18,7 +18,6 @@ export const FormLogin: React.FC<LoginFormProps> = ({ onLogin } ) => {
         () => false
     )
 
-
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         onLogin({email, password})

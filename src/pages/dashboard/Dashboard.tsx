@@ -19,7 +19,7 @@ const Dashboard = () => {
     }
 
     return(
-        <section >
+        <section>
             <div className='pt-3 flex justify-end pr-10 pb-3'> 
                 <Button onClick={handleLogout} type='button'>Logout</Button>
             </div>

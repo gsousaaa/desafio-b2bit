@@ -4,8 +4,6 @@ import { getProfile, ProfileData } from "../../services/api"
 import { Field } from "../common/Field"
 import { Loading } from "../common/Loading";
 
-
-
 export const BoxDashboard = () => {
     const [profileData, setProfileData] = useState<ProfileData | null>(null);
     const [loading, setLoading] = useState(true);
@@ -34,7 +32,7 @@ export const BoxDashboard = () => {
             <div className="flex flex-col items-center pb-5">
                 <p>Profile Picture</p>
                 {profileData &&
-                    (profileData.avatar ? (<img width="60px" src={profileData.avatar}/>) : (<img width="60px" src="/images/default.jpg" />))
+                    (profileData.avatar ? (<img  className="rounded-xl" width="60px" src={profileData.avatar}/>) : (<img className="rounded-xl border-2 border-inherit border-solid" width="60px" src="/images/default.jpg" />))
                 }
             </div>
 
