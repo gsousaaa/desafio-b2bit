@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 interface LoginProps {
-  setIsAuth: (bool: boolean) => any
+  setIsAuth: (isAuthenticated: boolean) => any
 }
 
 const Login = (  { setIsAuth }: LoginProps) => {
@@ -24,6 +24,7 @@ const Login = (  { setIsAuth }: LoginProps) => {
             if(loginData && loginData.tokens.access) {
                 setIsAuth(true)
                 navigate('/dashboard')
+                
                 setTimeout(() => {
                   localStorage.removeItem('accessToken')
                 }, 3600000)
