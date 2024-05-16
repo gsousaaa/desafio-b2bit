@@ -8,12 +8,12 @@ interface PrivateProps {
 }
 
 export const PrivateRoute = ({children, isAuth, redirect}: PrivateProps) => {
-    const navigator = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleStorageChange = (event: StorageEvent) => {
             if(event.key === "accessToken" && event.newValue === null) {
-                navigator(redirect);
+                navigate(redirect);
             }
         };
 
@@ -22,7 +22,7 @@ export const PrivateRoute = ({children, isAuth, redirect}: PrivateProps) => {
         return () => {
             window.removeEventListener('storage', handleStorageChange);
         }
-    }, [navigator])
+    }, [navigate])
 
      return isAuth ? (
         <>

@@ -24,9 +24,11 @@ const Login = (  { setIsAuth }: LoginProps) => {
             if(loginData && loginData.tokens.access) {
                 setIsAuth(true)
                 navigate('/dashboard')
-                
+
                 setTimeout(() => {
                   localStorage.removeItem('accessToken')
+                  setIsAuth(false);
+                  navigate('/')
                 }, 3600000)
             }
         } catch(e: any) {
@@ -38,7 +40,7 @@ const Login = (  { setIsAuth }: LoginProps) => {
             }
         }
     }
- 
+
     return (
         <>
           <div className="flex w-full h-screen" >
