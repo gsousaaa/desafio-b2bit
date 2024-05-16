@@ -1,5 +1,5 @@
 
-import { FormLogin } from "../../components/layout/FormLogin"
+import { FormLogin } from "../../components/auth/FormLogin"
 import { useNavigate } from 'react-router-dom';
 import { Credentials, loginUser } from "../../services/api"
 import { toast } from "react-toastify";
