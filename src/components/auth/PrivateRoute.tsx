@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import {useNavigate } from "react-router-dom";
+import {Navigate, useNavigate } from "react-router-dom";
 
 interface PrivateProps {
     children: JSX.Element,
@@ -28,7 +28,9 @@ export const PrivateRoute = ({children, isAuth, redirect}: PrivateProps) => {
         <>
         {children}
         </>
-    ) :  null
+    ) :  (
+        <Navigate to={redirect} replace/>
+    )
 
     
     
