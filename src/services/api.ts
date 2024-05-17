@@ -7,12 +7,19 @@ export interface Credentials {
     password: string;
 }
 
+interface Avatar { 
+        id: number;
+        high: string;
+        medium: string;
+        low: string;
+}
+
 export interface ProfileData {
     id: number,
     name: string,
     email: string,
     is_active: boolean,
-    avatar?: string | null,
+    avatar: Avatar,
     type: string,
     created: string,
     modified: string,
