@@ -1,6 +1,6 @@
 # Desafio B2bit - Estágio/Trainee
 ### Video demonstrando as funcionalidades do projeto
- Link: https://youtu.be/pVwBWLTP6Ec
+ Link: https://www.youtube.com/watch?v=uUwqRX3QBr4
 ### Deploy - acesse o projeto na web
 Para ter acesso à aplicação funcionando em tempo real, acesse: https://desafio-b2bit.vercel.app
 ### Como iniciar o projeto localmente
