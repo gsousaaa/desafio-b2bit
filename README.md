@@ -43,5 +43,5 @@ Para ter acesso à aplicação funcionando em tempo real, acesse: https://desafi
 - /src/components/auth: Pasta contendo os componentes utilizados na autenticação.
     - FormLogin.tsx - Componente que consiste em um box contendo um formulário de login, onde é feito o processo de passagem das informações (e-mail e senha) para a página de Login.
     - PrivateRoute.tsx - O componente é utilizado para proteger rotas que requerem autenticação. Ele garante que apenas usuários autenticados possam acessar determinadas páginas da aplicação e redirecionam para a pagina de login quando não há autenticação.
-- /src/pages: Contém as páginas completas utilizando os componentes - Login, Dashboard(página contendo as informações dos usuários) e notFound, utilizada para quando não é acessada uma url não existente no projeto.
+- /src/pages: Contém as páginas completas utilizando os componentes - Login, Dashboard(página contendo as informações dos usuários) e notFound, utilizada para quando é acessada uma url não existente no projeto.
 - /src/services/api.ts: Arquivo onde foi feito o consumo da API, utilizando as rotas de login e get para pegar as informações do usuário e onde foi feito o uso dos interceptors.
