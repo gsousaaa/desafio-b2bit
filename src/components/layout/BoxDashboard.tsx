@@ -20,22 +20,23 @@ export const BoxDashboard = () => {
         }
 
         fetchData()
-    }, []) 
+    }, [])
 
-    if(loading) {
-        return <Loading/>
+    if (loading) {
+        return <Loading />
     }
 
 
     return (
-        <div className="bg-white px-10 py-10 rounded-3xl shadow-2xl">
+        <div className="bg-white px-16 py-10 rounded-3xl shadow-2xl">
             <div className="flex flex-col items-center pb-5">
                 <p className="pb-1">Profile Picture</p>
                 {profileData &&
-                    (profileData.avatar ? (<img  className="rounded-xl w-16 h-14"
-                  src={profileData.avatar.medium}/>) : (<img className="rounded-xl border-2 border-inherit border-solid w-16 h-14" src="/images/default.jpg" />))
+                    (profileData.avatar ? (<img className="rounded-xl w-16 h-14"
+                        src={profileData.avatar.medium} />) : (<img className="rounded-xl border-2 border-inherit border-solid w-16 h-14" src="/images/default.jpg" />))
                 }
             </div>
+
 
             <div>
                 {profileData && (
@@ -49,6 +50,7 @@ export const BoxDashboard = () => {
                     <Field type="text" nameTitle='Email' value={profileData.email} />
                 )}
             </div>
+
         </div>
     )
 }
